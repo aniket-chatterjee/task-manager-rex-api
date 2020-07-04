@@ -67,6 +67,8 @@ class ProjectReadSerializer(serializers.ModelSerializer):
 class ProjectWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
+        user = serializers.HiddenField(
+            default=serializers.CurrentUserDefault())
         fields = [
             'id',
             'title',

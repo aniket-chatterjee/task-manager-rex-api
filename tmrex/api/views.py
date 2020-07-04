@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import responses
 from rest_framework import status
+from rest_framework.exceptions import NotFound
+
+
 from api.serializers import (
     UserReadSerializer,
     UserWriteSerializer,
@@ -15,6 +18,10 @@ from api.serializers import (
     TaskWriteSerializer
 )
 # Create your views here.
+
+
+def error404(request, exception):
+    raise NotFound()
 
 
 class UserViewSet(ReadWriteSerializerMixin, viewsets.ModelViewSet):
