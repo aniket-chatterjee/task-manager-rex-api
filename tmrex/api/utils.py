@@ -1,3 +1,4 @@
+from rest_framework.views import exception_handler
 from datetime import date, datetime
 from django.utils.timezone import make_aware
 

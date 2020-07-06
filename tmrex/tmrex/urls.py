@@ -31,13 +31,15 @@ from rest_framework_simplejwt.views import (
 from api import views
 handler404 = views.error404
 router = routers.DefaultRouter()
+# router.register(r'signup', views.Register)
 router.register(r'users', views.UserViewSet)
 router.register(r'projects', views.ProjectViewSet)
 router.register(r'tasks', views.TaskViewSet)
 
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
+    path('api/signup', views.Register.as_view(), name="signup"),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
